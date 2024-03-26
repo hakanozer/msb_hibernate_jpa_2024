@@ -143,7 +143,20 @@ public class CustomerService {
             tr.commit();
         }catch (Exception  ex) {
         }finally {
+            Customer c = session.get(Customer.class, 43);
+            c.setName("Mehmet");
+            c.setEmail("mehmet@mail.com");
+            System.out.println(c);
             session.close();
+
+            Session session1 = db1.openSession();
+            Transaction tr1 = session1.beginTransaction();
+
+            session1.update(c);
+            tr1.commit();
+
+            session1.close();
+
         }
 
     }

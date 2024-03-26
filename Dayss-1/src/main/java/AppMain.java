@@ -1,6 +1,10 @@
+import entities.Category;
 import entities.Customer;
+import entities.Product;
 import services.CustomerService;
+import services.ProductService;
 
+import java.util.ArrayList;
 import java.util.List;
 
 public class AppMain {
@@ -72,12 +76,41 @@ public class AppMain {
         }else {
             System.out.println("Delete fail: " + customer1.getCid());
         }
-        */
+
         long start = System.currentTimeMillis();
         service.allSave(1000000);
         long end = System.currentTimeMillis();
         long between = end - start;
         System.out.println("between :" + between);
+         */
+
+        ProductService productService = new ProductService();
+        /*
+        Product p1 = new Product();
+
+        List<Category> list = new ArrayList<>();
+        Category c1 = new Category();
+        c1.setCid(1l);
+        Category c2 = new Category();
+        c2.setCid(2l);
+        list.add(c1);
+        list.add(c2);
+
+        p1.setTitle("TV");
+        p1.setPrice(20000);
+        p1.setCategories(list);
+
+        p1 = productService.productSave(p1);
+        System.out.println(p1);
+         */
+
+        List<Product> ls = productService.allProduct();
+        for (Product item : ls) {
+            System.out.println(item.getTitle());
+            for (Category c : item.getCategories()) {
+                System.out.println(c.getName());
+            }
+        }
 
     }
 }
