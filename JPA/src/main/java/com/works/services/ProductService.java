@@ -89,5 +89,15 @@ public class ProductService {
         return true;
     }
 
+    public List<Product> priceSearch(Integer price) {
+        return productRepository.findByPriceGreaterThan(price);
+    }
+
+    public List<Product> productSearch(String title, String sort) {
+        title = "%"+title+"%";
+        sort = "%"+sort+"%";
+        return productRepository.titleDetailSearch(title, sort);
+    }
+
 
 }

@@ -53,5 +53,16 @@ public class ProductRestController {
         return productService.allChange(size);
     }
 
+    @GetMapping("priceSearch")
+    public List<Product> priceSearch(@RequestParam Integer price) {
+        return productService.priceSearch(price);
+    }
+
+    @GetMapping("productSearch")
+    public List<Product> priceSearch(@RequestParam String title, @RequestParam String sort) {
+        return productService.productSearch(title, sort);
+    }
+
+
 
 }
