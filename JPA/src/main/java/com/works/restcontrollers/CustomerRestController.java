@@ -3,9 +3,7 @@ package com.works.restcontrollers;
 import com.works.entities.Customer;
 import com.works.services.CustomerService;
 import lombok.RequiredArgsConstructor;
-import org.springframework.web.bind.annotation.PostMapping;
-import org.springframework.web.bind.annotation.RequestBody;
-import org.springframework.web.bind.annotation.RestController;
+import org.springframework.web.bind.annotation.*;
 
 @RestController
 @RequiredArgsConstructor
@@ -16,6 +14,11 @@ public class CustomerRestController {
     @PostMapping("customerAdd")
     public Customer customerAdd(@RequestBody Customer customer) {
         return customerService.customerAdd(customer);
+    }
+
+    @GetMapping("gmsSearch")
+    public Customer gmsSearch(@RequestParam String gsm) {
+        return customerService.findGsm(gsm);
     }
 
 }

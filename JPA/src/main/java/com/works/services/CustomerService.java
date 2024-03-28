@@ -5,6 +5,8 @@ import com.works.repositories.CustomerRepository;
 import lombok.RequiredArgsConstructor;
 import org.springframework.stereotype.Service;
 
+import java.util.Optional;
+
 @Service
 @RequiredArgsConstructor
 public class CustomerService {
@@ -13,6 +15,14 @@ public class CustomerService {
 
     public Customer customerAdd(Customer customer) {
         return customerRepository.save(customer);
+    }
+
+    public Customer findGsm(String gsm) {
+        Optional<Customer> optionalCustomer = customerRepository.findByAddresses_Phones_GsmEqualsIgnoreCase(gsm);
+        if (optionalCustomer.isPresent()) {
+            return optionalCustomer.get();
+        }
+        return null;
     }
 
 }
